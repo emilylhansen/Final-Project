@@ -1,0 +1,2 @@
+# Final-Project
+This program creates a database of movies that registered customers can watch. Existing customers can log-in to their registered account, or a new user can register a new account to have access to several functions in the movie database. Users are able to proceed as a Customer or Administrator. Customers are given a Wishlist of movies populated by the movie database, where they can add, delete, watch and view movies in their Wishlist, and Administrators can add, delete, and view movies in the movie database.
