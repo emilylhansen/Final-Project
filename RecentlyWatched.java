@@ -1,14 +1,9 @@
-/* 
-Liz Malman
-March 28, 2016
-Program Two
-Stack Array
-*/
+//This program creates stack array class for the recently watched movie
 
-//creates stack array class
+//serializes recently watched list for the user
 public class RecentlyWatched implements java.io.Serializable{
 
-	//creates required instances variable 
+	//creates required instances variable
 	private int n;
 	private Movie[] s;
 
@@ -34,7 +29,7 @@ public class RecentlyWatched implements java.io.Serializable{
 		}
 	}
 
-	//creates function to remove node 
+	//creates function to remove node
 	public Movie pop(){
 		//decreases n by 1
 		n--;
@@ -56,14 +51,13 @@ public class RecentlyWatched implements java.io.Serializable{
 		return n==0;
 	}
 
-	// printStack method for StackA
-    public void printStack() {
-    	//prints the number items in the array
-        //System.out.println(n);
-        //for each item in the array...
+	//printStack method for StackA
+  public void printStack() {
+    //prints the number items in the array
+    //for each item in the array...
 		for(int i = n-1; i >= 0; i--) {
-			//prints the key of the node
-            System.out.println("Movie: " + s[i].getTitle());
-        }
+		//prints the key of the node
+			System.out.println("Movie: " + s[i].getTitle());
     }
+  }
 }

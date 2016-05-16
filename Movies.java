@@ -1,5 +1,6 @@
-//movie archive
+//This program creates the movie archive
 
+//serializes the movie archive
 public class Movies implements java.io.Serializable{
 
   private Movie t;
@@ -10,7 +11,7 @@ public class Movies implements java.io.Serializable{
 		t = null;
 	}
 
-  //add new movie
+  //adds new movie to the database
   public Movie insertBST(Movie p) {
     //set root
 		if (t == null){
@@ -20,7 +21,6 @@ public class Movies implements java.io.Serializable{
 		else {
 			insert2(t, p);
 		}
-
 		return t;
 	}
 
@@ -45,42 +45,7 @@ public class Movies implements java.io.Serializable{
 		}
   }
 
-  //delete movie
-  //public void delete() {
-  //  if (isEmptyTree() == false){
-      //if root is p, delete
-  //    if (root.getKey() == p.getKey()){
-  //      deleteRoot(p);
-  //    }
-      //delete other node in bst
-//      else {
-  //      delete2(root, p);
-    //  }
-    //}
-  //}
-
-  //find least rated movie
-  //public int findMin() {
-
-  //}
-
-  //delete least rated movie
-  //public void deleteMin() {
-
-  //}
-
-  //access movie by release date
-  /*public String searchDate(int date){
-
-    //return movie title?
-  }*/
-
-  //access movie by ID
-  /*public String searchId(int id){
-
-    //return movie title?
-  }*/
-  public void traverse(){
+  public void traverse(){ //prints the movie archive
 		if (t != null){
 			traverse2(t.getLeft());
 			System.out.println(t.getTitle() + " " + t.getDate());
@@ -96,11 +61,11 @@ public class Movies implements java.io.Serializable{
 		}
 	}
 
-  public Movie searchBST(int date){
+  public Movie searchBST(int date){ //search the movie by the release date
     if (t == null){
       return null;
     }
-    //key is found
+    //key is found by the release date
     else if (date == t.getDate()){
       return t;
     }
@@ -115,7 +80,6 @@ public class Movies implements java.io.Serializable{
   }
 
   private Movie search2(Movie t, int date){
-
     if (t == null){
       return null;
     }
@@ -133,12 +97,12 @@ public class Movies implements java.io.Serializable{
     }
   }
 
-  public Movie searchID(int id){
+  public Movie searchID(int id){ //searches for the movie by its id
     if (t == null){
       return null;
     }
     //key is found
-    else if (id == t.getId()){
+    else if (id == t.getId()){ //id is found
       return t;
     }
     //search left for key
@@ -152,7 +116,6 @@ public class Movies implements java.io.Serializable{
   }
 
   private Movie searchID2(Movie t, int id){
-
     if (t == null){
       return null;
     }
@@ -170,7 +133,7 @@ public class Movies implements java.io.Serializable{
     }
   }
 
-  //print all movies
+  //print all movies in the database
   public void printMovies(){
 		printMovies2(root);
 		System.out.println();
@@ -222,7 +185,6 @@ public class Movies implements java.io.Serializable{
     return temp;
   }
 
-
   //find successor of deleted node
   private void successor( Movie p){
 
@@ -235,7 +197,6 @@ public class Movies implements java.io.Serializable{
       while (temp.getLeft() != null){
         temp = temp.getLeft();
       }
-
 
       //check if successor has children
       if (temp.getLeft() == null && temp.getRight() != null){
@@ -285,7 +246,7 @@ public class Movies implements java.io.Serializable{
     }
   }
 
-  private void deleteRoot(Movie p){
+  private void deleteRoot(Movie p){ //deletes the first movie in the archive
     //root has no left subtree
     if (root.getLeft() == null){
       root = root.getRight();
@@ -334,7 +295,7 @@ public class Movies implements java.io.Serializable{
       }
   }
 
-  public boolean isEmptyTree(){
+  public boolean isEmptyTree(){ //returns if the movie archive is empty or not
     if (t == null){
       return true;
     }

@@ -1,4 +1,5 @@
-//custumer archive
+//This program creates the customer archive.
+//Each customer has their own archive.
 
 public class Customers implements java.io.Serializable{
 
@@ -10,7 +11,7 @@ public class Customers implements java.io.Serializable{
 		t = null;
 	}
 
-  //add new movie
+  //add new movie to the customer's archive
   public Customer insertBST(Customer p) {
     //set root
 		if (t == null){
@@ -20,7 +21,6 @@ public class Customers implements java.io.Serializable{
 		else {
 			insert2(t, p);
 		}
-
 		return t;
 	}
 
@@ -45,41 +45,6 @@ public class Customers implements java.io.Serializable{
 		}
   }
 
-  //delete movie
-  //public void delete() {
-  //  if (isEmptyTree() == false){
-      //if root is p, delete
-  //    if (root.getKey() == p.getKey()){
-  //      deleteRoot(p);
-  //    }
-      //delete other node in bst
-//      else {
-  //      delete2(root, p);
-    //  }
-    //}
-  //}
-
-  //find least rated movie
-  //public int findMin() {
-
-  //}
-
-  //delete least rated movie
-  //public void deleteMin() {
-
-  //}
-
-  //access movie by release date
-  /*public String searchDate(int date){
-
-    //return movie title?
-  }*/
-
-  //access movie by ID
-  /*public String searchId(int id){
-
-    //return movie title?
-  }*/
   public void traverse(){
 		if (t != null){
 			traverse2(t.getLeft());
@@ -96,6 +61,7 @@ public class Customers implements java.io.Serializable{
 		}
 	}
 
+  //searches through the customer archive by the credit card of the user
   public Customer searchBST(int card){
     if (t == null){
       return null;
@@ -115,7 +81,6 @@ public class Customers implements java.io.Serializable{
   }
 
   private Customer search2(Customer t, int card){
-
     if (t == null){
       return null;
     }
@@ -152,7 +117,6 @@ public class Customers implements java.io.Serializable{
   }
 
   private Customer searchID2(Customer t, int card){
-
     if (t == null){
       return null;
     }
@@ -191,6 +155,7 @@ public class Customers implements java.io.Serializable{
 			printCustomers2(tree.getRight());
 		}
 	}
+
   public void deleteBST(Customer p){
     if (isEmptyTree() == false){
       //if root is p, delete
@@ -207,7 +172,6 @@ public class Customers implements java.io.Serializable{
   //return parent node of delete node
   private Customer findParent(Customer p){
     Customer temp = root;
-
     //parent is found
     while (temp.getLeft() != p && temp.getRight() != p){
       //key is less than, go left
@@ -222,7 +186,6 @@ public class Customers implements java.io.Serializable{
     return temp;
   }
 
-
   //find successor of deleted node
   private void successor( Customer p){
 
@@ -235,13 +198,10 @@ public class Customers implements java.io.Serializable{
       while (temp.getLeft() != null){
         temp = temp.getLeft();
       }
-
-
       //check if successor has children
       if (temp.getLeft() == null && temp.getRight() != null){
         //right child-set temp2 to right child
         temp2 = temp.getRight();
-
       }
       //left child-set temp2 to right child
       else{
@@ -334,7 +294,7 @@ public class Customers implements java.io.Serializable{
       }
   }
 
-  public boolean isEmptyTree(){
+  public boolean isEmptyTree(){ //returns if the customer's archive is empty or not
     if (t == null){
       return true;
     }

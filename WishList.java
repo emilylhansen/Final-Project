@@ -1,5 +1,7 @@
-//customer wishList
+//This program creates the customer's wishlist.
+//Each user has their own wishlist.
 
+//serializes the wishlist for the user
 public class WishList implements java.io.Serializable{
 
 	private int n;
@@ -12,7 +14,7 @@ public class WishList implements java.io.Serializable{
 		current = head;
 	}
 
-	public int length(){
+	public int length(){ //function to find the length of the wishlist
 		int count = 0;
 		Movie temp = head;
 		while (temp != null){
@@ -22,7 +24,7 @@ public class WishList implements java.io.Serializable{
 		return count;
 	}
 
-	public boolean isEmptyList(){
+	public boolean isEmptyList(){ //boolean to find if the wish list is empty or not
 		if (head == null){
 			return true;
 		}
@@ -31,7 +33,7 @@ public class WishList implements java.io.Serializable{
 		}
 	}
 
-	public Movie searchWL(int id){
+	public Movie searchWL(int id){ //searches the wishlist for the user
 		Movie temp = head;
 		while (temp != null){
 			if (temp.getId() == id){
@@ -46,57 +48,47 @@ public class WishList implements java.io.Serializable{
 		return null;
 		}
 
-	public Movie accessNext(){
-		//System.out.println(head);
-		//System.out.println(current);
+	public Movie accessNext(){ //access the next movie to be watched for the user
 		if (current != null){
-		//System.out.println("This is your current movie: " + current.getTitle());
 			if (current.getHold() == true){
-			
 				System.out.println("This is the current movie: " + current.getTitle());
 				Movie temp = current;
 				current = current.getNext();
-			/*if (current == null){
-				current = head;
-			}*/
-				return temp;
-				
+				return temp; //returns the current movie for the user
 			}
-			else{
+			else{ //the movie is not available
 				System.out.println("This movie is not longer available to watch.  Sorry :(");
 				Movie temp = current;
 				current = current.getNext();
 				return temp;
 			}
-
 		}
-		else{
+		else{ //the wishlist is empty
 			Movie temp = head;
 			System.out.println("Your wishlist is empty.");
-			return temp;
+			return temp; //returns the empty wish list
 		}
-			
 	}
 
-	public Movie searchRemoveWL(int id){
+	public Movie searchRemoveWL(int id){ //removes the movie from the wishlist
 		Movie p1 = head;
 		Movie p2 = head;
 
-		if (head.getId() == id){
+		if (head.getId() == id){ //if the id matches the movie id the user gave
 			head = head.getNext();
 			n -= 1;
 			return head;
 		}
-		else{
+		else{ //if the id does not match the movie id the user gave
 			while (p1.getNext() != null){
-				if (p1.getNext().getId() == id){
+				if (p1.getNext().getId() == id){ //if the id matches the movie id the user gave
 					p2 = p2.getNext();
 					p1.setNext(p1.getNext().getNext());
 					n -= 1;
 					return p1;
 
 				}
-				else {
+				else { //if the id does not match the movie id the user gave
 					p1 = p1.getNext();
 					p2 = p2.getNext();
 				}
@@ -105,7 +97,7 @@ public class WishList implements java.io.Serializable{
 		}
 	}
 
-	public void insertWL(Movie x){
+	public void insertWL(Movie x){ //inserts a movie in the wishlist
 		Movie temp = head;
 		x.setNext(head);
 		head = x;
@@ -113,21 +105,21 @@ public class WishList implements java.io.Serializable{
 		current = head;
 	}
 
-	public void insertLocation(Movie x, int k){
+	public void insertLocation(Movie x, int k){ //puts the movie in the correct location
 		Movie temp = head;
 		int i = 1;
-		if (head == null){
+		if (head == null){ //if the first spot of the wishlist is empty
 			head = x;
 			x.setNext(null);
 			n++;
 		}
-		if (k == 1){
+		if (k == 1){ //if it is the first spot in the wishlist
 			head = x;
 			x.setNext(temp);
 			n++;
 		}
 		else{
-			while (i != (k-1)){
+			while (i != (k-1)){ //if it is anywhere else within the wishlist
 				temp = temp.getNext();
 				i++;
 			}
@@ -138,7 +130,7 @@ public class WishList implements java.io.Serializable{
 			}
 		}
 
-	public void printWL(){
+	public void printWL(){ //prints the wishlist for the user
 		int i = 1;
 		Movie temp = head;
 		System.out.println("Wish List Length: " + n);
@@ -149,5 +141,4 @@ public class WishList implements java.io.Serializable{
 			i++;
 		}
 	}
-
 }
